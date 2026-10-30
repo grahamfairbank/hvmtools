@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Fixed
+- Snapshot age (vSnapshot *Age (days)* and the vHealth snapshot check) is now measured from the inventory's collection time, as documented, instead of the time the workbook is built. A saved inventory processed with `--from-json` gives the same ages and findings on any date, and the bundled sample gives `vHealth=50` again.
+
 ## [1.0.0] - 2026-10-20
 
 First public release. Verified against a live HPE VM Essentials 9.1.0.1 manager.

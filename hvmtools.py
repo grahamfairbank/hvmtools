@@ -649,7 +649,11 @@ def build_sheets(inv, snapshot_age_days=7, ds_free_pct=10):
 
     # ---- Snapshots
     inst_by_id = {str(i.get("id")): i for i in instances}
-    now = dt.datetime.now(dt.timezone.utc).replace(tzinfo=None)
+    # Age is measured at collection time, so a saved inventory (--from-json) reports
+    # the same ages whenever it is processed.
+    now = parse_date(inv.get("collected"))
+    if not isinstance(now, dt.datetime):
+        now = dt.datetime.now(dt.timezone.utc).replace(tzinfo=None)
     for iid, snaps in (inv.get("snapshots") or {}).items():
         inst = inst_by_id.get(iid, {})
         for sn in snaps:
