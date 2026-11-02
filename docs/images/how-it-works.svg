@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="852" viewBox="0 0 1400 852" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>How HVMTools works</title>
+<desc>HVMTools reads an HPE VM Essentials manager through the Morpheus REST API (GET only) and writes an RVTools-style Excel workbook.</desc>
+<defs>
+<marker id="a2a6bb8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2a6bb8"/></marker>
+<marker id="a3f7a1d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3f7a1d"/></marker>
+</defs>
+<rect width="1400" height="852" fill="#ffffff"/>
+<text x="24" y="48" font-size="30" font-weight="bold" fill="#1b1f24">How HVMTools works</text>
+<text x="24" y="76" font-size="15" fill="#57606a">RVTools-style inventory for HPE VM Essentials: one command reads the manager's REST API and writes one Excel workbook. Read-only.</text>
+<rect x="24" y="108" width="306" height="446" rx="14" fill="#eaf2fc" stroke="#2a6bb8" stroke-width="2"/>
+<text x="42" y="138" font-size="19" font-weight="bold" fill="#2a6bb8" text-anchor="start">① Your computer</text>
+<text x="42" y="158" font-size="13" font-weight="normal" fill="#57606a" text-anchor="start">hvmtools.py: one Python file</text>
+<rect x="400" y="108" width="600" height="446" rx="14" fill="#ecf6f2" stroke="#1c7a5c" stroke-width="2"/>
+<text x="418" y="138" font-size="19" font-weight="bold" fill="#1c7a5c" text-anchor="start">② HPE VM Essentials manager</text>
+<text x="418" y="158" font-size="13" font-weight="normal" fill="#57606a" text-anchor="start">Morpheus REST API: read-only calls</text>
+<rect x="1070" y="108" width="306" height="446" rx="14" fill="#eef7e6" stroke="#3f7a1d" stroke-width="2"/>
+<text x="1088" y="138" font-size="19" font-weight="bold" fill="#3f7a1d" text-anchor="start">③ Excel workbook</text>
+<text x="1088" y="158" font-size="13" font-weight="normal" fill="#57606a" text-anchor="start">HVMTools_&lt;manager&gt;_&lt;date&gt;.xlsx</text>
+<rect x="38" y="174" width="278" height="157" rx="8" fill="#ffffff" stroke="#2a6bb8" stroke-width="1.2"/>
+<text x="52" y="203" font-size="15" font-weight="bold" fill="#2a6bb8" text-anchor="start">Run one command</text>
+<text x="52" y="225" font-size="12" font-weight="bold" fill="#2a6bb8" text-anchor="start">python hvmtools.py --url</text>
+<text x="52" y="241" font-size="12" font-weight="bold" fill="#2a6bb8" text-anchor="start">https://&lt;manager&gt; -u &lt;user&gt;</text>
+<text x="52" y="262" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="66" y="262" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Password prompt, or --token, or</text>
+<text x="66" y="279" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">MORPHEUS_* environment variables</text>
+<text x="52" y="299" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Python 3.8+ with requests and openpyxl.</text>
+<text x="52" y="315" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Any machine that can reach the manager.</text>
+<rect x="38" y="343" width="278" height="140" rx="8" fill="#ffffff" stroke="#2a6bb8" stroke-width="1.2"/>
+<text x="52" y="372" font-size="15" font-weight="bold" fill="#2a6bb8" text-anchor="start">Options</text>
+<text x="52" y="395" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="66" y="395" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">--no-snapshots · --no-stats ·</text>
+<text x="66" y="412" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">--raw · --snapshot-age · --workers</text>
+<text x="52" y="433" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="66" y="433" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">--dump-json saves what was</text>
+<text x="66" y="450" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">collected; --from-json rebuilds</text>
+<text x="66" y="467" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">without a manager</text>
+<rect x="414" y="174" width="279" height="105" rx="8" fill="#ffffff" stroke="#1c7a5c" stroke-width="1.2"/>
+<text x="428" y="203" font-size="15" font-weight="bold" fill="#1c7a5c" text-anchor="start">Sign-in</text>
+<text x="428" y="225" font-size="12" font-weight="bold" fill="#1c7a5c" text-anchor="start">POST /oauth/token (client morph-api)</text>
+<text x="428" y="246" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="442" y="246" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Or a token you already have. After</text>
+<text x="442" y="263" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">sign-in, GET only</text>
+<rect x="414" y="291" width="279" height="137" rx="8" fill="#ffffff" stroke="#1c7a5c" stroke-width="1.2"/>
+<text x="428" y="320" font-size="15" font-weight="bold" fill="#1c7a5c" text-anchor="start">Inventory</text>
+<text x="428" y="342" font-size="12" font-weight="bold" fill="#1c7a5c" text-anchor="start">/api/ping · whoami · zones · groups ·</text>
+<text x="428" y="358" font-size="12" font-weight="bold" fill="#1c7a5c" text-anchor="start">clusters · servers · instances ·</text>
+<text x="428" y="374" font-size="12" font-weight="bold" fill="#1c7a5c" text-anchor="start">networks</text>
+<text x="428" y="395" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="442" y="395" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Paged with max and offset until</text>
+<text x="442" y="412" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">every record is read</text>
+<rect x="707" y="174" width="279" height="121" rx="8" fill="#ffffff" stroke="#1c7a5c" stroke-width="1.2"/>
+<text x="721" y="203" font-size="15" font-weight="bold" fill="#1c7a5c" text-anchor="start">Storage and details</text>
+<text x="721" y="225" font-size="12" font-weight="bold" fill="#1c7a5c" text-anchor="start">/api/clusters/{id}/datastores and</text>
+<text x="721" y="241" font-size="12" font-weight="bold" fill="#1c7a5c" text-anchor="start">/api/zones/{id}/data-stores</text>
+<text x="721" y="262" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="735" y="262" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Usage stats from /api/servers/{id}</text>
+<text x="735" y="279" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">only where the list lacks them</text>
+<rect x="707" y="307" width="279" height="105" rx="8" fill="#ffffff" stroke="#1c7a5c" stroke-width="1.2"/>
+<text x="721" y="336" font-size="15" font-weight="bold" fill="#1c7a5c" text-anchor="start">Snapshots</text>
+<text x="721" y="358" font-size="12" font-weight="bold" fill="#1c7a5c" text-anchor="start">/api/instances/{id}/snapshots</text>
+<text x="721" y="379" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="735" y="379" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">One call per instance, 8 in</text>
+<text x="735" y="396" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">parallel</text>
+<rect x="1084" y="174" width="278" height="161" rx="8" fill="#ffffff" stroke="#3f7a1d" stroke-width="1.2"/>
+<text x="1098" y="203" font-size="15" font-weight="bold" fill="#3f7a1d" text-anchor="start">One .xlsx, RVTools layout</text>
+<text x="1098" y="226" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="1112" y="226" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">vInfo · vCPU · vMemory · vDisk ·</text>
+<text x="1112" y="243" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">vNetwork · vSnapshot</text>
+<text x="1098" y="264" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="1112" y="264" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">vHost · vCluster · vDatastore ·</text>
+<text x="1112" y="281" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">vNetworks · vInstance</text>
+<text x="1098" y="302" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="1112" y="302" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">vHealth · vSource (+ raw_* tabs</text>
+<text x="1112" y="319" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">with --raw)</text>
+<rect x="1084" y="347" width="278" height="127" rx="8" fill="#ffffff" stroke="#3f7a1d" stroke-width="1.2"/>
+<text x="1098" y="376" font-size="15" font-weight="bold" fill="#3f7a1d" text-anchor="start">Ready to use</text>
+<text x="1098" y="399" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="1112" y="399" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Frozen headers and filters on</text>
+<text x="1112" y="416" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">every tab</text>
+<text x="1098" y="437" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="1112" y="437" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Sizes in MiB, dates in UTC</text>
+<text x="1098" y="458" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="1112" y="458" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">vHealth rows shaded by severity</text>
+<rect x="414" y="444" width="572" height="96" rx="8" fill="#ffffff" stroke="#57606a" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="428" y="468" font-size="15" font-weight="bold" fill="#57606a" text-anchor="start">Errors don&#x27;t stop the run</text>
+<text x="428" y="491" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">A 403 on one endpoint (a missing permission) prints a warning and leaves that</text>
+<text x="428" y="508" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">data empty. Only a 401 (bad credentials or token) stops the run.</text>
+<text x="428" y="525" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Credential-like fields are blanked before anything is saved.</text>
+<text x="38" y="520" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">A read-only Morpheus user is enough.</text>
+<text x="1084" y="520" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Hand it to a customer or colleague, or feed</text>
+<text x="1084" y="536" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">it to a sizing tool.</text>
+<line x1="334" y1="248" x2="396" y2="248" stroke="#2a6bb8" stroke-width="2" marker-end="url(#a2a6bb8)" marker-start="url(#a2a6bb8)"/>
+<text x="365.0" y="222" font-size="12" font-weight="bold" fill="#2a6bb8" text-anchor="middle">HTTPS</text>
+<text x="365.0" y="237" font-size="12" font-weight="bold" fill="#2a6bb8" text-anchor="middle">GET only</text>
+<line x1="1004" y1="248" x2="1066" y2="248" stroke="#3f7a1d" stroke-width="2" marker-end="url(#a3f7a1d)"/>
+<text x="1035.0" y="222" font-size="12" font-weight="bold" fill="#3f7a1d" text-anchor="middle">rows per</text>
+<text x="1035.0" y="237" font-size="12" font-weight="bold" fill="#3f7a1d" text-anchor="middle">tab</text>
+<text x="700.0" y="598" font-size="22" font-weight="bold" fill="#1b1f24" text-anchor="middle">What happens, step by step</text>
+<rect x="24.0" y="620" width="326.0" height="180" rx="12" fill="#ecf6f2" stroke="#1c7a5c" stroke-width="2"/>
+<text x="38.0" y="649" font-size="15" font-weight="bold" fill="#1c7a5c" text-anchor="start">A.  Collect  (collect())</text>
+<text x="38.0" y="672" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">1.</text>
+<text x="52.0" y="672" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Sign in, or use the token.</text>
+<text x="38.0" y="693" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">2.</text>
+<text x="52.0" y="693" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Read every list endpoint, page by page,</text>
+<text x="52.0" y="710" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">into one dictionary.</text>
+<text x="38.0" y="731" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">3.</text>
+<text x="52.0" y="731" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Fill in missing usage stats and snapshots</text>
+<text x="52.0" y="748" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">with per-item calls.</text>
+<text x="38.0" y="768" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Progress goes to stderr, one line per step.</text>
+<rect x="366.0" y="620" width="326.0" height="180" rx="12" fill="#eaf2fc" stroke="#2a6bb8" stroke-width="2"/>
+<text x="380.0" y="649" font-size="15" font-weight="bold" fill="#2a6bb8" text-anchor="start">B.  Match  (build_sheets())</text>
+<text x="380.0" y="672" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">1.</text>
+<text x="394.0" y="672" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Hosts are hypervisor servers; every other</text>
+<text x="394.0" y="689" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">server is a VM.</text>
+<text x="380.0" y="710" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">2.</text>
+<text x="394.0" y="710" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">VM → host → cluster; VM → instance; disk</text>
+<text x="394.0" y="727" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">→ datastore; NIC → network.</text>
+<text x="380.0" y="748" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">3.</text>
+<text x="394.0" y="748" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">One list of rows per tab.</text>
+<text x="380.0" y="768" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Works only on the collected data, so</text>
+<text x="380.0" y="784" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">--from-json gives the same workbook offline.</text>
+<rect x="708.0" y="620" width="326.0" height="180" rx="12" fill="#fff5e1" stroke="#a35f00" stroke-width="2"/>
+<text x="722.0" y="649" font-size="15" font-weight="bold" fill="#a35f00" text-anchor="start">C.  Check  (vHealth)</text>
+<text x="722.0" y="672" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="736.0" y="672" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Hosts in a bad state or maintenance mode;</text>
+<text x="736.0" y="689" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">host memory above 90%</text>
+<text x="722.0" y="710" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="736.0" y="710" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Datastores under 10% free</text>
+<text x="722.0" y="731" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="736.0" y="731" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">VMs in a bad state or powered off;</text>
+<text x="736.0" y="748" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">running VMs without the Morpheus agent</text>
+<text x="722.0" y="769" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">•</text>
+<text x="736.0" y="769" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Snapshots older than --snapshot-age days</text>
+<rect x="1050.0" y="620" width="326.0" height="180" rx="12" fill="#eef7e6" stroke="#3f7a1d" stroke-width="2"/>
+<text x="1064.0" y="649" font-size="15" font-weight="bold" fill="#3f7a1d" text-anchor="start">D.  Write  (write_workbook())</text>
+<text x="1064.0" y="672" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">1.</text>
+<text x="1078.0" y="672" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Formats every tab: Arial 10, dark-blue</text>
+<text x="1078.0" y="689" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">headers, freeze B2, autofilter, auto</text>
+<text x="1078.0" y="706" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">widths.</text>
+<text x="1064.0" y="727" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">2.</text>
+<text x="1078.0" y="727" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Empty tabs say &quot;No data returned&quot;.</text>
+<text x="1064.0" y="748" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">3.</text>
+<text x="1078.0" y="748" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">Saves one .xlsx and prints the row count</text>
+<text x="1078.0" y="765" font-size="13" font-weight="normal" fill="#1b1f24" text-anchor="start">per tab.</text>
+<text x="24" y="830" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Unofficial community tool, MIT license. Not an HPE product. HPE, Morpheus and VM Essentials are trademarks of Hewlett Packard Enterprise; RVTools is a trademark of its owner.</text>
+</svg>

@@ -1,5 +1,7 @@
 # How HVMTools works
 
+![How HVMTools works: your computer, the VM Essentials manager's REST API, and the Excel workbook](images/how-it-works.svg)
+
 ## Overview
 
 ```
